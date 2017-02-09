@@ -2,10 +2,11 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
+import {environment} from '../../environments/environment';
 
 export abstract class BaseService {
   private token: string;
-  private baseUrl: string = 'http://webcook-cms/app_dev.php/api/';
+  private baseUrl: string = environment.apiUrl;
 
   constructor(protected http: Http) {}
 
@@ -38,6 +39,7 @@ export abstract class BaseService {
   protected handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
+      console.log(error);
       const body = error.json() || '';
       const err = body.message || JSON.stringify(body);
       errMsg = `${error.status} - ${error.statusText || ''} ${err}`;

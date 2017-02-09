@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { MaterialModule } from '@angular/material';
 
 import { LoginService } from './services/login.service';
 import { PageService } from './services/page.service';
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     NgxDatatableModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MaterialModule.forRoot()
   ],
   providers: [
     LoginService,
