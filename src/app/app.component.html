@@ -1,10 +1,22 @@
-<h1>
-  WebcookCMS
-</h1>
+<md-toolbar color="primary">
+    <div class="md-toolbar-layout">
+      <md-toolbar-row>
+        &nbsp;WebcookCMS&nbsp;&nbsp;
+        <nav>
+          <a md-button routerLink="/dashboard">Dashboard</a>
+          <a md-button routerLink="/users">Users</a>
+          <a md-button routerLink="/login">log out</a>
+        </nav>
+      </md-toolbar-row>
+    </div>
+  </md-toolbar>
 
-<a routerLink="/dashboard">Dashboard</a>
-<a routerLink="/users">Users</a>
+<div fxLayout="row" >
+  <div color="primary" fxFlex="10%" > <app-dashboard></app-dashboard> </div>
+  <div fxFlex>     
+    <div flex class="app-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
 
-<a routerLink="/login">log out</a>
-
-<router-outlet></router-outlet>

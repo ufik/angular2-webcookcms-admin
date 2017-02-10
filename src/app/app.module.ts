@@ -5,6 +5,7 @@ import { HttpModule, BaseRequestOptions, RequestOptions } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { MaterialModule } from '@angular/material';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { LoginService } from './services/login.service';
 import { PageService } from './services/page.service';
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     HttpModule,
     NgxDatatableModule,
     RouterModule.forRoot(appRoutes),
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot()
   ],
   providers: [
     LoginService,
