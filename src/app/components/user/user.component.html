@@ -1,0 +1,30 @@
+<h2 i18n>Users</h2>
+
+<div>
+
+  <button routerLink="/users/add" md-fab><md-icon></md-icon></button>
+
+  <ngx-datatable class="material"
+    [columnMode]="'flex'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [rows]="rows">
+    <ngx-datatable-column name="Username" [flexGrow]="1">
+      <template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Email" [flexGrow]="1">
+      <template let-value="value" ngx-datatable-cell-template>
+        {{value}}
+      </template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Action" [flexGrow]="1">
+      <template let-row="row" ngx-datatable-cell-template>
+        <button md-button routerLink="/users/{{row.id}}" i18n>Edit</button>
+        <button md-button (click)="delete(row.id)" i18n>Delete</button>
+      </template>
+    </ngx-datatable-column>
+  </ngx-datatable>
+</div>

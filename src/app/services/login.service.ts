@@ -2,10 +2,10 @@ import { Injectable, Injector } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
 
-import { BaseService } from './base.service';
+import { ApiService } from './api.service';
 
 @Injectable()
-export class LoginService extends BaseService {
+export class LoginService extends ApiService {
 
   constructor(protected http: Http) {
     super(http);

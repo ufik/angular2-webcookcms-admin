@@ -10,16 +10,18 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginService } from './services/login.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserComponent } from './user/user.component';
+import { AppComponent } from './components/bootstrap/app.component';
+import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserComponent } from './components/user/user.component';
+import { UserFormComponent } from './components/user/user-form/user-form.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
   { path: 'users', component: UserComponent, pathMatch: 'full' },
+  { path: 'users/:id', component: UserFormComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     LoginComponent,
     PageNotFoundComponent,
     DashboardComponent,
-    UserComponent
+    UserComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ const appRoutes: Routes = [
     NgxDatatableModule,
     RouterModule.forRoot(appRoutes),
     MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    FlexLayoutModule
   ],
   providers: [
     LoginService,

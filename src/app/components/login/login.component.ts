@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { LoginService } from '../services/login.service';
+import { LoginService } from '../../services/login.service';
 import { BaseComponent } from '../base.component';
 import { Router } from '@angular/router';
 

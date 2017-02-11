@@ -4,7 +4,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/map';
 import {environment} from '../../environments/environment';
 
-export abstract class BaseService {
+export abstract class ApiService {
   private token: string;
   private baseUrl: string = environment.apiUrl;
 
@@ -19,11 +19,26 @@ export abstract class BaseService {
   protected get(url): Observable<any> {
       return this.http.get(this.baseUrl + url + '.json', this.getRequestOptions())
                 .map(this.extractData)
-                .catch(this.handleError)
+                .catch(this.handleError);
+  }
+
+  protected put(url, data): Observable<any> {
+    return this.http.put(this.baseUrl + url + '.json', data, this.getRequestOptions())
+                .map(this.extractData)
+                .catch(this.handleError);
+  }
+
+  protected delete(url): Observable<any> {
+    return this.http.delete(this.baseUrl + url, this.getRequestOptions())
+              .map(this.extractData)
+              .catch(this.handleError);
   }
 
   private getRequestOptions() {
-    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.token});
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'bearer ' + this.token
+    });
 
     return new RequestOptions({ headers: headers });
   }
@@ -36,6 +51,9 @@ export abstract class BaseService {
     return res.json();
   }
 
+  /**
+   * TODO: Refactor
+   */
   protected handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {

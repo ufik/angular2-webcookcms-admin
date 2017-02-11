@@ -19,9 +19,11 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "app/custom-theme.scss"
+        "app/custom-theme.scss",
+        "../node_modules/@swimlane/ngx-datatable/release/material.css"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",

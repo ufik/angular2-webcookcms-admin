@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 
 import { BaseComponent } from '../base.component';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -12,11 +12,8 @@ import { UserService } from '../services/user.service';
 })
 export class UserComponent extends BaseComponent {
   rows: any;
-  columns = [
-    { prop: 'username' },
-    { name: 'Email' },
-    { name: 'Action' }
-  ];
+  selected: any;
+
   constructor(private userService: UserService, protected router: Router) {
     super(router);
     this.getUsers();
@@ -24,5 +21,13 @@ export class UserComponent extends BaseComponent {
 
   getUsers() {
     this.userService.getUsers().subscribe(response => this.rows = response);
+  }
+
+  delete(id) {
+    this.userService.deleteUser(id).subscribe(response => this.afterDelete());
+  }
+
+  afterDelete() {
+
   }
 }

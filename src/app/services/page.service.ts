@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
-import { BaseService } from './base.service';
+import { ApiService } from './api.service';
 
 @Injectable()
-export class PageService extends BaseService {
+export class PageService extends ApiService {
 
   constructor(protected http: Http) {
     super(http);

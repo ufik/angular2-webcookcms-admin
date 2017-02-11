@@ -3,3 +3,7 @@
 body {
     margin: 0px;
 }
+
+.input-invalid-message  {
+  color: red;
+}

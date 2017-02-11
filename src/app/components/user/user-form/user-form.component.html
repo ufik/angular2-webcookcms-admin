@@ -1,0 +1,41 @@
+<p>
+  user-form works!
+</p>
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm">
+  <div>
+    <md-input-container>
+      <input md-input placeholder="Username" required i18n-placeholder #username="ngModel" [(ngModel)]="user.username" name="username" />
+    </md-input-container>
+    <small class="input-invalid-message" [hidden]="username.valid || username.pristine" i18n>
+      Username is required (minimum 5 characters).
+    </small>
+  </div>
+
+  <div>
+    <md-input-container>
+      <input type="email" md-input placeholder="Email" required i18n-placeholder [(ngModel)]="user.email" #email="ngModel" name="email" />
+    </md-input-container>
+    <small class="input-invalid-message" [hidden]="email.valid || email.pristine" i18n>
+      Email is required.
+    </small>
+  </div>
+
+  <div>
+    <md-input-container>
+      <input type="password" md-input placeholder="Password" i18n-placeholder [(ngModel)]="user.password" name="password" />
+    </md-input-container>
+  </div>
+
+  <div>
+    <md-input-container>
+      <input type="password" md-input placeholder="Repeat password" i18n-placeholder name="repeat_password" />
+    </md-input-container>
+  </div>
+
+  <div>
+    <md-checkbox i18n [(ngModel)]="user.isActive"  name="isActive">Is active</md-checkbox>
+  </div>
+
+  <button md-button [disabled]="!userForm.valid" type="submit" i18n>Save</button>
+</form>
