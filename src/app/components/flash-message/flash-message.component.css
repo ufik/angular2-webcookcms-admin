@@ -1,0 +1,15 @@
+span {
+    font-weight: bold;
+}
+
+span.success {
+    color: green;
+}
+
+span.error {
+    color: red;
+}
+
+span.info {
+    color: white;
+}

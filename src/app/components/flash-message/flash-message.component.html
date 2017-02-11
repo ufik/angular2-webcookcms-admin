@@ -1,0 +1,6 @@
+<span class="{{message.type}}">
+  <md-icon *ngIf="message.type == 'success'">check</md-icon>
+  <md-icon *ngIf="message.type == 'error'">error</md-icon>
+  <md-icon *ngIf="message.type == 'info'">info</md-icon>
+  {{message.content}}
+</span>

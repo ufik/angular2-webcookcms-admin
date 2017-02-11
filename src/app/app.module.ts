@@ -10,8 +10,11 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import { LoginService } from './services/login.service';
 import { PageService } from './services/page.service';
 import { UserService } from './services/user.service';
+import { LoaderService } from './services/loader.service';
+import { FlashMessageService } from './services/flash-message.service';
 import { AppComponent } from './components/bootstrap/app.component';
 import { LoginComponent } from './components/login/login.component';
+import { FlashMessageComponent } from './components/flash-message/flash-message.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserComponent } from './components/user/user.component';
@@ -33,7 +36,11 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     DashboardComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    FlashMessageComponent
+  ],
+  entryComponents: [
+    FlashMessageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +54,9 @@ const appRoutes: Routes = [
   providers: [
     LoginService,
     PageService,
-    UserService
+    UserService,
+    LoaderService,
+    FlashMessageService
   ],
   bootstrap: [AppComponent]
 })

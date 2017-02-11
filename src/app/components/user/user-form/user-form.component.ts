@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { UserService } from '../../../services/user.service';
+import { FlashMessageService } from '../../../services/flash-message.service';
 
 @Component({
   selector: 'app-user-form',
@@ -12,7 +13,12 @@ import { UserService } from '../../../services/user.service';
 export class UserFormComponent implements OnInit {
   user: any = {};
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private userService: UserService,
+    private router: Router,
+    private flashMessageService: FlashMessageService
+  ) { }
 
   ngOnInit() {
     this.route.params
@@ -44,6 +50,14 @@ export class UserFormComponent implements OnInit {
 
   handleResponse(response: any) {
     console.log(response);
+    if (response == 'undefined') {
+      this.flashMessageService.success('User has been updated.');
+    } else {
+      this.flashMessageService.success('New user has been created.');
+    }
+    
+
+    this.router.navigate(['/users']);
   }
 
 }

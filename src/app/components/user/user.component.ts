@@ -4,18 +4,26 @@ import { Observable } from 'rxjs/Rx';
 
 import { BaseComponent } from '../base.component';
 import { UserService } from '../../services/user.service';
+import { FlashMessageService } from '../../services/flash-message.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent extends BaseComponent {
+export class UserComponent extends BaseComponent implements OnInit {
   rows: any;
   selected: any;
 
-  constructor(private userService: UserService, protected router: Router) {
+  constructor(
+    private userService: UserService,
+    protected router: Router,
+    private flashMessageService: FlashMessageService
+    ) {
     super(router);
+  }
+
+  ngOnInit() {
     this.getUsers();
   }
 
@@ -28,6 +36,8 @@ export class UserComponent extends BaseComponent {
   }
 
   afterDelete() {
+    this.flashMessageService.success('User has been deleted.');
 
+    this.getUsers();
   }
 }
